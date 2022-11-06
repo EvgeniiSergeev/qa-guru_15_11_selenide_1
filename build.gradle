@@ -2,14 +2,11 @@ plugins {
     id 'java'
 }
 
+group 'ru.itone'
+version '1.0-SNAPSHOT'
+
 repositories {
     mavenCentral()
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
 }
 
 compileTestJava {
@@ -17,17 +14,14 @@ compileTestJava {
 }
 
 dependencies {
-    // Selenide
-    testImplementation("com.codeborne:selenide-testng:6.9.0")
-    testRuntimeOnly("org.slf4j:slf4j-simple:2.0.3")
+    testImplementation ('org.junit.jupiter:junit-jupiter:5.8.1',
+            'org.slf4j:slf4j-simple:2.0.3',
+            'com.codeborne:selenide:6.7.4')
 
-    // JUnit 5
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
 }
 
 test {
-    systemProperties += System.properties
-    useJUnitPlatform{}
+    useJUnitPlatform()
 }
